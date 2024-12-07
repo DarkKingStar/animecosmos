@@ -1,3 +1,4 @@
+import { query } from 'express';
 import Joi from 'joi';
 const VALIDATE = {
     USERLOGIN:{
@@ -16,6 +17,13 @@ const VALIDATE = {
         query: Joi.object().keys({
             page: Joi.number().integer().min(1).required(),
         }),
-    } 
+    },
+    
+    QUERYANDPAGE:{
+        body: Joi.object().keys({
+            page: Joi.number().integer().min(1).required(),
+            query:Joi.string().required()
+        }),
+    }
 };
 export default VALIDATE;

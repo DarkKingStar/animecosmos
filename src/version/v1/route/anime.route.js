@@ -35,5 +35,8 @@ animeRoute.get('/top-upcoming', Validation(VALIDATE.ONLYPAGENUMBER), CONTROLLER.
 
 animeRoute.get('/tv', Validation(VALIDATE.ONLYPAGENUMBER), CONTROLLER.tv);
 
+animeRoute.get('/spotlight', CONTROLLER.spotlight);
+
+animeRoute.post('/search', Validation(VALIDATE.QUERYANDPAGE), CONTROLLER.search);
 
 export default animeRoute;
