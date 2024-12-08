@@ -141,9 +141,10 @@ export default {
     },
 
     search: async (req, res) => {
-        const { page = 1,query = '' } = req.query;
+        const { page = 1,query = '' } = req.body;
         try{
             const response = await SERVICE.search(query, page);
+            console.log(response);
             responseHandler(res, true, HTTP_CODES.OK.code, HTTP_CODES.OK.message, response);
         }catch(e){
             console.log(e);

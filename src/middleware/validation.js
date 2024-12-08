@@ -1,4 +1,5 @@
-
+import HTTP_CODES  from '../utils/httpCodes.js';
+import responseHandler from '../handlers/response.handler.js';
 const options = {
     basic: {
         abortEarly: false,
@@ -16,7 +17,7 @@ const Validation = (schema) => (req, res, next) => {
         if (error) {
             console.log(error);
             const message = error.details[0].message || 'Invalid Inputs';
-            throw new BadRequestException(message);
+            throw responseHandler(res, false, HTTP_CODES.BAD_REQUEST.code, message, {});
         }
     });
     next();
