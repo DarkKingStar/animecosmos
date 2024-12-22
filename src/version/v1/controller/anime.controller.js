@@ -151,6 +151,26 @@ export default {
             responseHandler(res, false, HTTP_CODES.INTERNAL_SERVER_ERROR.code, HTTP_CODES.INTERNAL_SERVER_ERROR.message, {});
             
         }
-    }
+    },
+    animeInfo: async (req, res) => {
+     try{
+         const { id } = req.body;
+         const response = await SERVICE.animeInfo(id);
+         responseHandler(res, true, HTTP_CODES.OK.code, HTTP_CODES.OK.message, response);
+     }   catch(e){
+         console.log(e);
+         responseHandler(res, false, HTTP_CODES.INTERNAL_SERVER_ERROR.code, HTTP_CODES.INTERNAL_SERVER_ERROR.message, {});
+     }
+    },
+    episodeSource: async (req, res) => {
+        try{
+            const { id } = req.body;
+            const response = await SERVICE.episodeSource(id);
+            responseHandler(res, true, HTTP_CODES.OK.code, HTTP_CODES.OK.message, response);
+        }   catch(e){
+            console.log(e);
+            responseHandler(res, false, HTTP_CODES.INTERNAL_SERVER_ERROR.code, HTTP_CODES.INTERNAL_SERVER_ERROR.message, {});
+        }
+    },
 }
 

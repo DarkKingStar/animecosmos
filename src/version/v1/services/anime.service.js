@@ -92,4 +92,14 @@ export default {
   genreSearch: async (type, page) => {
     return await Anime.genreSearch(type, page);
   },
+
+  // info
+  animeInfo: async (id) => {
+    return await Anime.fetchAnimeInfo(id);
+  },
+
+  // watch
+  episodeSource: async (id) => {
+    return await Anime.fetchEpisodeSources(id);
+  },
 };

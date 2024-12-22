@@ -24,6 +24,11 @@ const VALIDATE = {
             page: Joi.number().integer().min(1).required(),
             query:Joi.string().required()
         }),
-    }
+    },
+    ONLYID:{
+        body: Joi.object().keys({
+            id: Joi.string().required(),
+        }),
+    },
 };
 export default VALIDATE;

@@ -39,4 +39,8 @@ animeRoute.get('/spotlight', CONTROLLER.spotlight);
 
 animeRoute.post('/search', Validation(VALIDATE.QUERYANDPAGE), CONTROLLER.search);
 
+animeRoute.post('/info', Validation(VALIDATE.ONLYID), CONTROLLER.animeInfo);
+
+animeRoute.post('/watch', Validation(VALIDATE.ONLYID), CONTROLLER.episodeSource);
+
 export default animeRoute;
