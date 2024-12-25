@@ -126,7 +126,7 @@ async function onListening() {
   logger.info(`Server listening at ${bind} in ${process.env.ENV} mode`);
 }
 
-const numCPUs = os.cpus().length;
+// const numCPUs = os.cpus().length;
 
 // if (cluster.isPrimary) {
   // Fork workers for each CPU core
