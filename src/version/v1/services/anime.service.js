@@ -1,6 +1,6 @@
-import { ANIME } from "darkconsumet";
+import { ANIME, StreamingServers } from "darkconsumet";
 
-const Anime = new ANIME();
+const Anime = new ANIME.Zoro();
 export default {
   // most-popular
   mostPopular: async (page) => {
@@ -100,6 +100,8 @@ export default {
 
   // watch
   episodeSource: async (id) => {
-    return await Anime.fetchEpisodeSources(id);
+    const hd1 = await Anime.fetchEpisodeSources(id, StreamingServers.VidCloud);
+    const hd2 = await Anime.fetchEpisodeSources(id, StreamingServers.VidStreaming);
+    return [hd1, hd2];
   },
 };

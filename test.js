@@ -1,10 +1,12 @@
-import {ANIME} from "darkconsumet";
+import { ANIME, StreamingServers } from "darkconsumet";
 
-const Anime = new ANIME();
 
 async function main() {
-    let data = await Anime.search("one piece", 1);
-    console.log("DATA OUT",data);
+    const anime = new ANIME.Zoro();
+    const search = await anime.search('one piece');
+    const info = await anime.fetchAnimeInfo(search.results[0].id);
+    const sources = await anime.fetchEpisodeSources(info.episodes[0].id);
+    console.log(sources.sources[0].url);
 }
 
 main();
