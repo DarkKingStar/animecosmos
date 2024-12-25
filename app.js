@@ -128,25 +128,25 @@ async function onListening() {
 
 const numCPUs = os.cpus().length;
 
-if (cluster.isPrimary) {
+// if (cluster.isPrimary) {
   // Fork workers for each CPU core
-  for (let i = 0; i < numCPUs; i++) {
-    cluster.fork();
-  }
-  // Listen for dying workers and restart them
-  cluster.on("exit", (worker, code, signal) => {
-    logger.error({
-      message: `Worker ${worker.process.pid} died. Code: ${code}, Signal: ${signal}`,
-      level: "error",
-    });
-    logger.info("Starting a new worker...");
-    cluster.fork(); // Restart the worker
-  });
-  logger.info(
-    `Primary process ${process.pid} is running and forked ${numCPUs} workers`
-  );
-} else {
+  // for (let i = 0; i < numCPUs; i++) {
+  //   cluster.fork();
+  // }
+  // // Listen for dying workers and restart them
+  // cluster.on("exit", (worker, code, signal) => {
+  //   logger.error({
+  //     message: `Worker ${worker.process.pid} died. Code: ${code}, Signal: ${signal}`,
+  //     level: "error",
+  //   });
+  //   logger.info("Starting a new worker...");
+  //   cluster.fork(); // Restart the worker
+  // });
+  // logger.info(
+  //   `Primary process ${process.pid} is running and forked ${numCPUs} workers`
+  // );
+// } else {
   server.listen(port);
   server.on("error", onError);
   server.on("listening", onListening);
-}
+// }
